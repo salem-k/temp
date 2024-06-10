@@ -1,0 +1,37 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Articlefournisseur $articlefournisseur
+ * @var string[]|\Cake\Collection\CollectionInterface $fournisseurs
+ * @var string[]|\Cake\Collection\CollectionInterface $articles
+ */
+?>
+<div class="row">
+    <aside class="column">
+        <div class="side-nav">
+            <h4 class="heading"><?= __('Actions') ?></h4>
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $articlefournisseur->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $articlefournisseur->id), 'class' => 'side-nav-item']
+            ) ?>
+            <?= $this->Html->link(__('List Articlefournisseurs'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+        </div>
+    </aside>
+    <div class="column-responsive column-80">
+        <div class="articlefournisseurs form content">
+            <?= $this->Form->create($articlefournisseur) ?>
+            <fieldset>
+                <legend><?= __('Edit Articlefournisseur') ?></legend>
+                <?php
+                    echo $this->Form->control('fournisseur_id', ['options' => $fournisseurs, 'empty' => true]);
+                    echo $this->Form->control('code');
+                    echo $this->Form->control('prix');
+                    echo $this->Form->control('article_id', ['options' => $articles, 'empty' => true]);
+                ?>
+            </fieldset>
+            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
+</div>
